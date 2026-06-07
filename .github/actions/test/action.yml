@@ -1,0 +1,17 @@
+name: Project Test
+
+description: Run all the tests in the assignment
+
+runs:
+  using: composite
+
+  steps:
+    - name: Configure Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: temurin
+
+    - name: Run tests
+      shell: bash
+      run: mvn test                 #Run all the tests in the project and check that they pass successfully.

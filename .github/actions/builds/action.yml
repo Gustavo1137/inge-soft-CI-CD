@@ -1,0 +1,17 @@
+name: Project Build
+
+description: Compile the project and check for errors
+
+runs:                          
+  using: composite
+
+  steps:
+    - name: Configure Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Compile the project
+      shell: bash
+      run: mvn compile            #Compile the project and verify that there are no compilation errors.
