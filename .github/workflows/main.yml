@@ -1,0 +1,27 @@
+name: Continuous Integration
+
+on: #Event that triggers the workflow
+  push: #The workflow runs whenever a push is made to any branch of the repository
+    pull_request:
+      branches: [main] #The workflow runs when a pull request is made to the main branch
+
+
+jobs: #A workflow run is made up of one or more jobs, which run in parallel by default
+
+  build:
+    name: Build Project
+    runs-on: ubuntu-latest #Define the type of machine to run the job on.
+    steps:
+      name: Build Task
+      uses: actions/checkout@v6 #Latest available version
+      run: mvn -B compile #compile: Compile the source code of the project
+                          #-B: Run in non-interactive (batch) mode (disables output color)
+
+
+    test:
+      name: Test Project
+      runs-on: ubuntu-latest
+      steps:
+        name: Test Task 
+        uses: actions/checkout@v6
+        run: mvn -B test #Test the compiled source code using a suitable unit testing framework
