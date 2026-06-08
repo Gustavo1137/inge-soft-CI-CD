@@ -17,8 +17,8 @@ jobs: #A workflow run is made up of one or more jobs, which run in parallel by d
     - uses: actions/checkout@v6 #Latest available version
     
     - name: Build Task
-      run: mvn -B compile       #compile: Compile the source code of the project
-                                  #-B: Run in non-interactive (batch) mode (disables output color)
+      uses: ./.github/actions/build #compile: Compile the source code of the project
+                                    #-B: Run in non-interactive (batch) mode (disables output color)
 
   test:
     name: Test Project
@@ -27,4 +27,4 @@ jobs: #A workflow run is made up of one or more jobs, which run in parallel by d
     - uses: actions/checkout@v6
 
     - name: Test Task
-      run: mvn -B test #Test the compiled source code using a suitable unit testing framework
+      uses: ./.github/actions/test #Test the compiled source code using a suitable unit testing framework
